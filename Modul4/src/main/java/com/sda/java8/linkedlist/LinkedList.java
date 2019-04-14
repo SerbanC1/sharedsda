@@ -22,8 +22,39 @@ public class LinkedList {
            // node
        }
            parcurge.setNextElement(node);
-
     }
+    void remove(int value){
+//       if ( head.getNextElement().getNextElement()==null){  // conditia de eliminare a ultimului element + next line
+//           head.setNextElement(null);                      // daca lista contine 2 elemente
+//       }
+
+//        for(Node nodCurent=head; nodCurent.getNextElement().getValue()==value; nodCurent=nodCurent.getNextElement()){
+//
+//        } // Nu putem sa folosin for  pentru ca
+
+        // if the list is empty, we stop
+        if (head==null){
+            return;
+        }
+        // if the first element is the value, move the head to the next element
+        if (head.getValue()==value){
+            head=head.getNextElement();
+            return;
+        }
+        // walk the list until we pass through all elements or we find the value
+        Node nodCurent = head;
+        while (nodCurent.getNextElement() != null && (nodCurent.getNextElement().getValue()!=value)){
+            nodCurent=nodCurent.getNextElement();
+        }
+
+        // if we didn't find the element, end
+        if(nodCurent.getNextElement()==null){
+            return;
+        }
+        // remove the element
+        nodCurent.setNextElement(nodCurent.getNextElement().getNextElement());
+    }
+
     // Display all element values of the list separated
     String print(){
         StringBuilder builder = new StringBuilder();

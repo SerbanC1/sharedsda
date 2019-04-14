@@ -14,6 +14,20 @@ public class Application {
         list.add(node4);
 
         System.out.println(list.print());
+        // TODO: REMOVE 40, print, remove 30, print
+        System.out.println(" Elements : " + list.print());
+
+        list.remove(40);
+        System.out.println(" Elements : " + list.print());
+        list.remove(30);
+        System.out.println(" Elements : " + list.print());
+        list.remove(20);
+        System.out.println(" Elements : " + list.print());
+        list.remove(50);
+        System.out.println( " Elements : " + list.print());
+
+
+
 
     }
 }
