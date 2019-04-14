@@ -1,67 +1,65 @@
 package com.sda.java8.linkedlist;
 
 public class LinkedList {
-
     private Node head;
-    //Adds new node to the list
-    void add(Node node){
-        // Test if is null then...
-        // Else : set next element of head
-        // parcurge = head
-       // while parcurge has a next
-        //   parcurge becomes parcurge.next
-        // parcurge.next = node
-       if (head == null){
-           head = node;
-           return;
-       }
-       Node parcurge = head;
-       while (parcurge.getNextElement()!=null) {
-           parcurge = parcurge.getNextElement();
-           //  parcurge = 20 | null
-           // node
-       }
-           parcurge.setNextElement(node);
+    // Adds new node to the list
+    void add(Node node) {
+        if (head == null) {
+            head = node;
+            return;
+        }
+        Node parcurge = head;
+        while (parcurge.getNextElement() != null) {
+            parcurge = parcurge.getNextElement();
+        }
+        // Example
+        // parcurge = 20|null
+        // node = 40|null
+        // connect node 20|Node(40)
+        parcurge.setNextElement(node);
     }
-    void remove(int value){
-//       if ( head.getNextElement().getNextElement()==null){  // conditia de eliminare a ultimului element + next line
-//           head.setNextElement(null);                      // daca lista contine 2 elemente
-//       }
-
-//        for(Node nodCurent=head; nodCurent.getNextElement().getValue()==value; nodCurent=nodCurent.getNextElement()){
-//
-//        } // Nu putem sa folosin for  pentru ca
-
-        // if the list is empty, we stop
-        if (head==null){
+    void remove(int value) {
+        // Example: remove last element if list contains only 2 values
+//        if (head.getNextElement().getNextElement() == null) {
+//            head.setNextElement(null);
+//        }
+        // We don't use the for because it's not explicitly doing anything
+        // besides walking the list
+//        for (Node nodCurent = head; nodCurent.getNextElement().getValue() == value;
+//             nodCurent = nodCurent.getNextElement()) {
+//        }
+        // If the list is empty, we stop.
+        if (head == null) {
             return;
         }
-        // if the first element is the value, move the head to the next element
-        if (head.getValue()==value){
-            head=head.getNextElement();
+        // If the first element is the value to remove, move the head to the next element.
+        if (head.getValue() == value) {
+            head = head.getNextElement();
             return;
         }
-        // walk the list until we pass through all elements or we find the value
+        // Walk the list until we pass through all elements or we find the value.
         Node nodCurent = head;
-        while (nodCurent.getNextElement() != null && (nodCurent.getNextElement().getValue()!=value)){
-            nodCurent=nodCurent.getNextElement();
+        while (nodCurent.getNextElement() != null &&
+                (nodCurent.getNextElement().getValue() != value)) {
+            nodCurent = nodCurent.getNextElement();
         }
-
-        // if we didn't find the element, end
-        if(nodCurent.getNextElement()==null){
+        // If we didn't find the element, end.
+        if (nodCurent.getNextElement() == null) {
             return;
         }
-        // remove the element
+        // Remove the element.
         nodCurent.setNextElement(nodCurent.getNextElement().getNextElement());
     }
-
-    // Display all element values of the list separated
-    String print(){
+    // Displays all element values of the list separated by space
+    String print() {
+        // Hint: same procedure of passing through the elements
         StringBuilder builder = new StringBuilder();
-        for (Node nodCurent = head; nodCurent != null; nodCurent = nodCurent.getNextElement()){
+        for (Node nodCurent = head; nodCurent != null;
+             nodCurent = nodCurent.getNextElement()) {
             builder.append(nodCurent.getValue());
             builder.append(" ");
         }
         return builder.toString();
     }
 }
+
