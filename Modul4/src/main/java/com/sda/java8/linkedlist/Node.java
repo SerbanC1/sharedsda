@@ -5,10 +5,12 @@ public class Node {
     private Node nextElement;
 
     public Node(int value) {
+
         this.value = value;
     }
 
     public int getValue() {
+
         return value;
     }
 
@@ -18,7 +20,11 @@ public class Node {
 
     public void setNextElement(Node nextElement) {
         this.nextElement = nextElement;
+
+
+
+        }
     }
 
 
-}
+
